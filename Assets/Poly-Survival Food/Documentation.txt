@@ -1,0 +1,21 @@
+A light, fun and flexible low poly resource pack perfect for prototyping or adding to a low poly world.
+
+This package is well-suited for third-person or top-down viewing.
+On top of all this, the asset includes any parts you might need to develop a shooter or RPG.
+The whole pack is made in polygonal style and can be combined with other polygonal style packs.
+
+Over 200 models for game development.
+
+◼ Models info ◼
+Food (x208)
+
+◼ Asset info ◼
+Models variation: 208
+Max poly count: 15000
+Min poly count: 20
+Textures count: 1
+Textures size: 1024x1024 px
+
+◼ Compatibility ◼
+- Support Universal Render Pipeline (URP)
+- Support High Definition Render Pipeline (HDRP)
