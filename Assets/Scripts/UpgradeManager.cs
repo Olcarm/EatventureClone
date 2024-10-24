@@ -46,7 +46,11 @@ public class UpgradeManager : MonoBehaviour
 
     public void AddChef()
     {
-        Instantiate(chefPrefab, new Vector3(0, 0, 0), Quaternion.identity);
+        GameObject chef = ObjectPool.Instance.GetPooledChef();
+        if (chef != null)
+        {
+            chef.SetActive(true);
+        }
     }
 
     public void AddCustomer(int amount)

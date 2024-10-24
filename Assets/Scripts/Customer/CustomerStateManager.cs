@@ -31,6 +31,9 @@ public class CustomerStateManager : MonoBehaviour
         return customer;
     }
     public void DestroyCustomer(){
-        Destroy(gameObject);
+        currentState = WaitingTableState;
+        customer.SetCustomerOrdered();
+        customer.OrderDelivered();
+        gameObject.SetActive(false);
     }
 }

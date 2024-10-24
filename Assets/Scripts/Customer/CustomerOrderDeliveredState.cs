@@ -26,6 +26,8 @@ public class CustomerOrderDeliveredState : CustomerBaseState
             CustomerSpawner.Instance.CustomerLeft();
             customer.DestroyCustomer();
             
+            
+            
         }
     }
 

@@ -39,7 +39,11 @@ public class CustomerSpawner : MonoBehaviour
 
     private void SpawnCustomer()
     {
-        Instantiate(customerPrefab, spawnPosition, Quaternion.identity);
+        GameObject customer = ObjectPool.Instance.GetPooledCustomer();
+        if(customer != null){
+            customer.transform.position = spawnPosition;
+            customer.SetActive(true);
+        }
         customerCount++;
     }
     public void IncreaseCustomerCount(int amount){
