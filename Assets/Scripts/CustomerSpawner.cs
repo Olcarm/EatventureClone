@@ -2,8 +2,8 @@ using UnityEngine;
 
 public class CustomerSpawner : MonoBehaviour
 {
-
     public static CustomerSpawner Instance { get; private set; }
+
     private int customerCountMax;
     private int customerCount = 0;
     private Vector3 spawnPosition;
