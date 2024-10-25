@@ -3,12 +3,17 @@ using UnityEngine;
 
 public class ChefPreparingState : ChefBaseState
 {
-    private Counter counter;
     private float timer;
     public override void EnterState(ChefStateManager chef)
     {
-        counter = chef.FindCounterState.GetCounter();
         timer = 0;
+    }
+
+    public override void Setup(ChefStateManager chef)
+    {
+        table = chef.GetTable();
+        counter = chef.GetCounter();
+        order = chef.GetMealSO();
     }
 
     public override void UpdateState(ChefStateManager chef)
@@ -21,7 +26,7 @@ public class ChefPreparingState : ChefBaseState
         else
         {
             counter.SetCounterOccupied();
-            counter = null;
+            
             chef.SwitchState(chef.MovingState);
         }
     }

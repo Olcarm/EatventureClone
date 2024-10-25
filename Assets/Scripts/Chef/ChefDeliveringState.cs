@@ -2,14 +2,17 @@ using UnityEngine;
 
 public class ChefDeliveringState : ChefBaseState
 {
-    private MealSO order;
-    private Table table;
     public override void EnterState(ChefStateManager chef)
     {
         HoldingVisual holdingVisual = chef.GetHoldingVisual();
         holdingVisual.ClearHoldingObject();
-        order = chef.TakingOrderState.GetOrder();
-        table = chef.WaitingOrderState.GetTable();
+    }
+
+    public override void Setup(ChefStateManager chef)
+    {
+        table = chef.GetTable();
+        counter = chef.GetCounter();
+        order = chef.GetMealSO();
     }
 
     public override void UpdateState(ChefStateManager chef)

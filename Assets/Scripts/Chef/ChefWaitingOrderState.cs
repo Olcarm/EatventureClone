@@ -4,11 +4,17 @@ using UnityEngine;
 public class ChefWaitingOrderState : ChefBaseState
 {
     private List<Table> tableList;
-    private Table table;
 
     public override void EnterState(ChefStateManager chef)
     {
         tableList = OrderManager.Instance.GetTableList();
+    }
+
+    public override void Setup(ChefStateManager chef)
+    {
+        table = chef.GetTable();
+        counter = chef.GetCounter();
+        order = chef.GetMealSO();
     }
 
     public override void UpdateState(ChefStateManager chef)
@@ -24,13 +30,12 @@ public class ChefWaitingOrderState : ChefBaseState
                     {
                         tempTable.SetIsServingExist();
                         table = tableList[i];
+                        chef.SetTable(tempTable);
                         chef.SwitchState(chef.MovingState);
                         break;
                     }
                 }
     }
-    public Table GetTable(){
-        return table;
-    }
+
 
 }

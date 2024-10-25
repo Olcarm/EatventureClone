@@ -2,8 +2,6 @@ using UnityEngine;
 
 public class ChefMovingState : ChefBaseState
 {
-    private Table table;
-    private Counter counter;
     private Vector3 targetPosition;
 
 
@@ -11,18 +9,23 @@ public class ChefMovingState : ChefBaseState
     {
         if (chef.GetPreviousState() == chef.WaitingOrderState)
         {
-            table = chef.WaitingOrderState.GetTable();
             targetPosition = table.GetChefPosition().position;
         }
         if(chef.GetPreviousState() == chef.FindCounterState){
-            counter = chef.FindCounterState.GetCounter();
             targetPosition = counter.GetPreparationPosition().position;
         }
         if(chef.GetPreviousState() == chef.PreparingState){
+            chef.GetHoldingVisual().UpdateHoldingObject(order);
             targetPosition = table.GetChefPosition().position;
-            chef.GetHoldingVisual().UpdateHoldingObject(chef.TakingOrderState.GetOrder());
         }
+        
+    }
 
+    public override void Setup(ChefStateManager chef)
+    {
+        table = chef.GetTable();
+        counter = chef.GetCounter();
+        order = chef.GetMealSO();
     }
 
     public override void UpdateState(ChefStateManager chef)
